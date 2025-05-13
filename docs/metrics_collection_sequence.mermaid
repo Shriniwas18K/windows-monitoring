@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant Server as Windows Server
+    participant Client as Python psutil Client
+    participant Database as PostgreSQL Database
+    participant Grafana as Grafana Dashboard
+
+    loop Every 10 Seconds
+        Server->>Client: Expose System Metrics
+        activate Client
+        
+        Client->>Client: Capture CPU Metrics
+        Note right of Client: psutil.cpu_times()
+        Note right of Client: psutil.cpu_percent()
+        Note right of Client: psutil.cpu_stats()
+        
+        Client->>Client: Capture RAM Metrics
+        Note right of Client: psutil.virtual_memory()
+        
+        Client->>Client: Prepare Metrics Payload
+        Note right of Client: JSON Serialization
+        
+        Client->>Database: Insert Metrics
+        activate Database
+        Database-->>Client: Insertion Confirmed
+        deactivate Database
+        
+        Client-->>Grafana: Metrics Available
+        activate Grafana
+        Grafana->>Grafana: Update Dashboards
+        deactivate Grafana
+        
+        deactivate Client
+    end
+
+    Note over Server,Grafana: Continuous Monitoring Cycle

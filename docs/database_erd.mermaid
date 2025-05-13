@@ -1,0 +1,38 @@
+erDiagram
+    SERVER ||--|| CPU_TIMES : captures
+    SERVER ||--|| CPU_STATS : generates
+    SERVER ||--|| RAM_METRICS : monitors
+
+    SERVER {
+        string ip_address PK
+        string hostname
+        timestamp last_updated
+    }
+
+    CPU_TIMES {
+        string ip_address FK
+        timestamp time_stamp
+        numeric user_mode
+        numeric system_mode
+        numeric idle_time
+        numeric interrupt_time
+    }
+
+    CPU_STATS {
+        string ip_address FK
+        timestamp time_stamp
+        numeric cpu_percent
+        bigint context_switches
+        bigint interrupts
+        bigint syscalls
+    }
+
+    RAM_METRICS {
+        string ip_address FK
+        timestamp time_stamp
+        bigint total_memory
+        bigint available_memory
+        numeric memory_percent
+        bigint used_memory
+        bigint free_memory
+    }
