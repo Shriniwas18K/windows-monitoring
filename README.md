@@ -1,6 +1,12 @@
-# windows-monitoring
+# windows-monitoring-system
 
 Monitoring on-premises servers is essential to ensure their performance, detect anomalies, and enhance security. This project leverages Python's psutil module to achieve detailed monitoring with a client-database architecture. Metrics are collected from on-premises servers, stored in a PostgreSQL database, and visualized on a Grafana dashboard.
+
+## Author : Shriniwas Kulkarni
+- **PCCOE 2026 BTech CSE(AIML)**
+- **Email:** [kshriniwas180205@gmail.com](mailto:kshriniwas180205@gmail.com)  
+- **Phone:** +91 [8999883480]  
+- **GitHub:** [github.com/Shriniwas18K](https://github.com/Shriniwas18K)  
 
 ## Features
 
